@@ -1,0 +1,39 @@
+#Creation projet Laravel version 6
+composer create-project --prefer-dist laravel/laravel e-commerce  "6.*"
+--------------------------------------------------------------------------
+
+#installation Ui (boostrap ,vue)
+composer require laravel/ui:^1.0 --dev
+-----------------------------------------------------------------------------
+
+#importer bootstratp
+php artisan ui bootstrap
+------------------------------------------------------------------------------
+#installer depency js
+npm intsall
+------------------------------------------------------------------------------
+
+#bundle files
+npm run dev
+------------------------------------------------------------------------------
+
+#installation font awsome
+npm install font-awesome
+put this file in folder sass
+@import "node_modules/font-awesome/scss/font-awesome";
+---------------------------------------------------------------------------------
+
+
+Infos utiles
+
+#ajouter un file dans projet 
+creer un fichier dans dossier app
+dans composer.json
+add apres autoload :
+  "files":[
+            "app/Helpers.php"
+        ],
+ dans terminal composer dump-autoload       
+----------------------------------------------------------------------------------
+#payement  
+Site stripe.com
