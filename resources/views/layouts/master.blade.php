@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
     @yield('extra-script')
   
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
+  
 
     <!-- Bootstrap core CSS -->
 {{--  <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -46,10 +46,10 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
+    {{--  <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">  --}}
   </head>
   <body>
     <div class="container">
@@ -57,7 +57,7 @@
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1"><a href="{{route('cart.index')}}"><i class="fa fa-cart-plus mr-2 p-1"aria-hidden="true" style="font-size:20px"></i></a>
         <span class="badge badge-pill badge-dark">{{Cart::count()}}</span></a>
-        <a href="/clean">Chataba</a>
+        <a href="/clean">clean</a>
       </div>
       <div class="col-4 text-center">
         <a class="blog-header-logo text-dark" href="{{route('products.index')}}">E-Commerce</a>
@@ -222,7 +222,7 @@
 </main><!-- /.container -->  --}}
 
 <footer class="blog-footer">
-  <p>Web application for E-commerce</a> by <a href="https://twitter.com/mdo">Reda FAHMI</a>.</p>
+  <p>Web application for E-commerce</a> by <a href="#">Reda FAHMI</a>.</p>
   <p>
     <a href="#">Back to top</a>
   </p>
