@@ -67,14 +67,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {   
-  
-      
+
     $data=$request->json()->all();
-
-     
-       
-
-
        $order=new Order();
        
        $order->payment_intent_id=$data['paymentIntent']['id'];
@@ -83,20 +77,18 @@ class CheckoutController extends Controller
         ->setTimestamp($data['paymentIntent']['created'])
         ->format('Y-m-d H:i:s');
 
-      
-
        $products=[];
        $i=0;
        foreach (Cart::content() as $product) {
-           $product['product_'.$i][] = $product->model->title;
-           $product['product_'.$i][] = $product->model->price;
-           $product['product_'.$i][] = $product->qty;
+           $products['product_'.$i][] = $product->model->title;
+           $products['product_'.$i][] = $product->model->price;
+           $products['product_'.$i][] = $product->qty;
          
            $i++;
            # code...
        }
        $order->products=serialize($products);
-       
+
      
        $order->user_id=15;
        $order->save();

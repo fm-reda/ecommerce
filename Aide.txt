@@ -1,0 +1,13 @@
+#-------------LARavel Fonction ----------------#
+
+#(Requete) recuperer une base de donné random quantité 6  
+$products=Product::inRandomOrder()->take(6)->get();
+---------------------------------------------------------
+
+#(Requete) recupere un tableau en jointure et pagination 
+ $product = Product::with('categories')->paginate(6); 
+ --------------------------------------------------------
+
+ #(fonction: link) creer un link en gardant l'url par categories
+ {{$products->appends(request()->input())->links()}}
+

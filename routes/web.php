@@ -22,6 +22,9 @@ Route::get('/boutique/{slug}','ProductController@show')->name('products.show');
 /*cart Route */
 Route::get('/panier','CartController@index')->name('cart.index');
 Route::post('/panier/ajouter','CartController@store')->name('cart.store');  
+
+Route::patch('panier/{rowId}', 'CartController@update')->name('cart.update');   
+
 Route::delete('/panier/{rowId}','CartController@destroy')->name('cart.destroy');
 Route::get('/clean', function(){
     Cart::destroy();
@@ -33,3 +36,8 @@ Route::get('/clean', function(){
 Route::get('/paiement','CheckoutController@index')->name('checkout.index');
 Route::post('/paiement','CheckoutController@store')->name('checkout.store');
 Route::get('/merci','CheckoutController@thankyou')->name('checkout.thankyou');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

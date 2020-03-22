@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function getPrice(){
+    public function getPrice()
+    {
 
-        $price=$this->price/100;
-        return number_format($price, 2, ',', ' '). ' MAD';
+        $price = $this->price / 100;
+        return number_format($price, 2, ',', ' ') . ' MAD';
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
     }
 }
