@@ -1,4 +1,21 @@
-#-------------LARavel Fonction ----------------#
+-------------------------------------------------------
+-                Authentification                                 
+-------------------------------------------------------
+
+-------------------------------------------------------
+-                Model                                
+-------------------------------------------------------
+
+#creation d'une colone galerie image peut etre null et apres la colone image
+ $table->text('images')->nullable()->after('image');
+
+
+
+
+-------------------------------------------------------
+-                Laravel Fonction                                 
+-------------------------------------------------------
+
 
 #(Requete) recuperer une base de donné random quantité 6  
 $products=Product::inRandomOrder()->take(6)->get();
@@ -8,6 +25,25 @@ $products=Product::inRandomOrder()->take(6)->get();
  $product = Product::with('categories')->paginate(6); 
  --------------------------------------------------------
 
+
  #(fonction: link) creer un link en gardant l'url par categories
  {{$products->appends(request()->input())->links()}}
+-----------------------------------------------------------------
 
+#(fonction:decode image) decode galerie image en json 
+ JSON_decode($product->images,true
+-----------------------------------------------------------------
+
+
+
+-------------------------------------------------------
+-                Javascript                                
+-------------------------------------------------------
+#ajouter une class à une div
+  div.classList.add('alert', 'alert-warning');
+
+#foreach pour un element
+thumbnails.forEach((element) =>element.addEventListener('mouseover', functionName));
+
+#fonction changer un src d'une image par une autre (this=element)
+function functionName(e) {mainImage.src = this.src;}  

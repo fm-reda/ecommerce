@@ -23,8 +23,11 @@ class ProductsTableSeeder extends Seeder
                 'price' => $faker->numberBetween(15, 300) * 100,
                 'image' => 'https://picsum.photos/200/300?random=' . $faker->numberBetween(1, 200)
             ])->categories()->attach([
-                rand(1, 4),
-                rand(1, 4)
+                rand(26, 30),
+                rand(26, 30),
+
+
+
             ]);
         }
     }
