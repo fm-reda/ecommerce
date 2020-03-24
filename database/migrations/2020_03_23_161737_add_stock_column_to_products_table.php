@@ -14,6 +14,7 @@ class AddStockColumnToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->unsignedInteger('stock')->after('images')->default(50);
             //
         });
     }

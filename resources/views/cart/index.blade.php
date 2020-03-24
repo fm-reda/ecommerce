@@ -54,7 +54,8 @@
                                     <td class="border-0 align-middle">
 
 
-                                        <select class="custom-select" data-id="{{$product->rowId}}" name="qty" id="qty">
+                                        <select class="custom-select" data-id="{{$product->rowId}}"
+                                            data-stock="{{$product->model->stock}}" name="qty" id="qty">
 
                                             @for ($i = 1; $i <= 6; $i++) <option value="{{$i}}"
                                                 {{ $i==$product->qty?'selected':''}}>{{$i}}</option>
@@ -150,7 +151,9 @@
 
         element.addEventListener('change', function () {
             var rowId = this.getAttribute('data-id');
+            var stock = this.getAttribute('data-stock');
             var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
             fetch(
 
                 `/panier/${rowId}`, {
@@ -162,7 +165,10 @@
                     },
                     method: 'PATCH',
                     body: JSON.stringify({
-                        qty: this.value
+                        qty: this.value,
+                        stock: stock
+
+
                     })
                 }
 

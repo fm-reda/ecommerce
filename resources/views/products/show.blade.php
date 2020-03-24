@@ -4,6 +4,7 @@
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-relative">
         <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-success">
+                <div class="badge badge-pill badge-info">{{$stock}}</div>
                 @foreach ($product->categories as $category)
                 {{$category->name}}
 
@@ -15,6 +16,7 @@
         </div> --}}
         <p class="mb-0 mt-3 text-muted">{!!$product->description !!}</p>
         <strong class="">{{$product->getPrice()}}</strong>
+        @if($stock==="Disponible")
         <form action="{{route('cart.store')}}" method="post">
             @csrf
             <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -24,6 +26,7 @@
                     aria-hidden="true"></i></button>
         </form>
 
+        @endif
     </div>
     <div class="col-auto d-none d-lg-block p-5">
         <img src="{{asset('storage/'.$product->image)}}" id="mainImage" alt="" height="300" width="260">

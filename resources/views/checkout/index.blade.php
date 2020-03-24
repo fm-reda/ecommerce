@@ -102,7 +102,7 @@
                         'content');
                     var form = document.getElementById('payment-form');
                     var url = form.action;
-                    var redirect = '/merci';
+
 
                     fetch(
                         url, {
@@ -120,7 +120,12 @@
                             })
                         }
                     ).then((data) => {
-                        console.log(data)
+                        if (data.status === 400) {
+                            var redirect = '/boutique';
+                        } else {
+                            var redirect = '/merci';
+                        }
+
                         window.location.href = redirect;
 
 

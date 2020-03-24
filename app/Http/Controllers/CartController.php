@@ -39,24 +39,23 @@ class CartController extends Controller
     public function store(Request $request)
 
 
-    {   
-        $duplicata=Cart::search(function ($cartItem, $rowId) use ($request){
+    {
+        $duplicata = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id == $request->product_id;
         });
-        if($duplicata->isNotEmpty()){
-            return redirect()->route('products.index')->with('success','Product already added');
-
+        if ($duplicata->isNotEmpty()) {
+            return redirect()->route('products.index')->with('success', 'Product already added');
         }
-        $product=Product::find($request->product_id);
-       
+        $product = Product::find($request->product_id);
+
 
         //associer
-        
+
         // dd(Cart::content());
 
-        Cart::add($product->id,$product->title,1,$product->price)
-         ->associate('App\Product');
-         return redirect()->route('products.index')->with('success','Product added successfully');
+        Cart::add($product->id, $product->title, 1, $product->price)
+            ->associate('App\Product');
+        return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
 
     /**
@@ -90,22 +89,26 @@ class CartController extends Controller
      */
     public function update(Request $request, $rowId)
     {
-        $data=$request->json()->all();
-        $validator=Validator::make($request->all(),[
+        $data = $request->json()->all();
+        $validator = Validator::make($request->all(), [
 
-            'qty'=>'required|numeric|between:1,6'
+            'qty' => 'required|numeric|between:1,6'
 
         ]);
 
-        if($validator->fails()){
-            Session::flash('danger','Quantity of product cant be more than 6.');
-            return response()->json(['error' =>'cart Quantity has not been Updated']);
+        if ($validator->fails()) {
+            Session::flash('danger', 'Quantity of product cant be more than 6.');
+            return response()->json(['error' => 'cart Quantity has not been Updated']);
+        }
 
-        } 
-        
-        Cart::update($rowId,$data['qty']);
-        Session::flash('success','Quantity of product changed to '.$data['qty']);
-        return response()->json(['success' =>'cart Quantity has been Updated']);
+        if ($data['qty'] > $data['stock']) {
+            Session::flash('danger', 'quantité du produit n\'est pas disponible.');
+            return response()->json(['error' => 'Product Quantity not ']);
+        }
+
+        Cart::update($rowId, $data['qty']);
+        Session::flash('success', 'Quantity of product changed to ' . $data['qty']);
+        return response()->json(['success' => 'cart Quantity has been Updated']);
     }
 
     /**
@@ -118,10 +121,10 @@ class CartController extends Controller
 
     {
 
-        
+
         Cart::remove($rowId);
-      
-        
-        return back()->with('success','the product has been deleted.');
+
+
+        return back()->with('success', 'the product has been deleted.');
     }
 }

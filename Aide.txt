@@ -47,3 +47,6 @@ thumbnails.forEach((element) =>element.addEventListener('mouseover', functionNam
 
 #fonction changer un src d'une image par une autre (this=element)
 function functionName(e) {mainImage.src = this.src;}  
+
+
+

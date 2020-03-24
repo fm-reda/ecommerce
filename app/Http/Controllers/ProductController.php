@@ -30,17 +30,18 @@ class ProductController extends Controller
     {
 
         $product = Product::where('slug', $slug)->firstOrFail();
-        return view('products.show', compact('product'));
+        $stock = $product->stock === 0 ? 'Indisponible' : 'Disponible';
+        return view('products.show', compact('product', 'stock'));
     }
 
     public function search()
     {
 
         request()->validate([
-            'q' => 'required|min:3'
+            'Search' => 'required|min:3'
         ]);
 
-        $q = request()->input('q');
+        $q = request()->input('Search');
         $products = Product::where('title', 'like', "%$q%")
             ->orwhere('description', 'like', "%$q%")
             ->paginate(6);

@@ -138,7 +138,7 @@
     </div>
   </div> --}}
 
-        @if (request()->input('q'))
+        @if (request()->input('Search'))
         <h6>{{$products->total()}} result for search "{{request()->q}}"</h6>
 
         @endif
