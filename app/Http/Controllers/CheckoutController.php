@@ -26,8 +26,15 @@ class CheckoutController extends Controller
             return redirect()->route('products.index');
         }
         Stripe::setApiKey('sk_test_bRprZEBGjkkk9Hya0gXjCXpS00ubnJa3da');
+
+        if (request()->session()->has('coupon')) {
+            $total = (Cart::subtotal() - request()->session()->get('coupon')['remise']) * (config('cart.tax') / 100)
+                +  (Cart::subtotal() - request()->session()->get('coupon')['remise']);
+        } else {
+            $total = Cart::total();
+        }
         $intent = PaymentIntent::create([
-            'amount' => round(Cart::total()),
+            'amount' => round($total),
             'currency' => 'MAD',
 
 
@@ -47,7 +54,7 @@ class CheckoutController extends Controller
         $clientSecret = Arr::get($intent, 'client_secret');
 
         // dd($clientSecret);
-        return view('checkout.index', compact('clientSecret'));
+        return view('checkout.index', compact('clientSecret', 'total'));
     }
 
     /**

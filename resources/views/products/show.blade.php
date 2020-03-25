@@ -49,17 +49,20 @@
 <script>
     var mainImage = document.querySelector('#mainImage');
     var thumbnails = document.querySelectorAll('.img-thumbnail');
+    console.log(thumbnails)
 
     thumbnails.forEach((element) =>
 
-        element.addEventListener('mouseover', changeImage));
+        element.addEventListener('click', changeImage));
 
     function changeImage(e) {
         mainImage.src = this.src;
+        console.log(1);
 
         mainImage.classList.add('rounded');
     }
-
+   
+h1
 </script>
 
 @endsection
