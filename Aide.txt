@@ -76,3 +76,12 @@ function functionName(e) {mainImage.src = this.src;}
 
 
 
+Bottstartp
+
+bo-rad-23 >> radius
+ hov1 >> hover
+ s-text1  fz=15px uppercase ff color FFF
+ trans-0-4
+ bg1 222222
+ bg4 111111 
+ flex-c-m >>center 

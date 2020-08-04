@@ -1,5 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('content')
+{{-- {{dd($categorie)}} --}}
 @foreach ($products as $product)
 <div class="col-md-6">
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

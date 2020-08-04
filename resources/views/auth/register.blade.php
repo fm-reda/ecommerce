@@ -1,11 +1,17 @@
-@extends('layouts.master')
+@extends('layouts.master3')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="row justify-content-center bg-white">
+        <div class="col-md-6 mb-5">
+            <div class="row justify-content-center  mt-5 mb-4 ">
+                <a href="{{route('home')}}" class="">
+                    <img src="{{ asset('images/icons/logo2.png') }}"
+                        style="max-height: 50px!important;background-color:#f8fafc!important" alt="IMG-LOGO">
+                </a>
+            </div>
+            <div class="card ">
+                <div class="card-header bg-dark text-white">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -71,13 +77,16 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn-login hov1">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
                     </form>
+                    <div class="mt-5" style="font-size:20px">Already have an account? <a
+                            href="{{route('login')}}">Sign-In</a></div>
                 </div>
+
             </div>
         </div>
     </div>

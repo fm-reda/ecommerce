@@ -15,11 +15,14 @@ class ProductController extends Controller
         // dd(Cart::content());
         //requete pour recuperer les produit par categorie
         if (request()->categorie) {
+            $categorie = request()->categorie;
             $products = Product::with('categories')->whereHas('categories', function ($query) {
                 $query->where('slug', request()->categorie);
             })->orderBy('created_at', 'DESC')->paginate(6);
+            return view('products.index', compact('products', 'categorie'));
         } else {
             $products = Product::with('categories')->orderBy('created_at', 'DESC')->paginate(6);
+            return view('products.index', compact('products'));
         }
         // dd($product);
 

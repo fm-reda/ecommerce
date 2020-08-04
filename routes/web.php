@@ -10,14 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/master', function () {
+    return view('layouts.master2');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/', function () {
+//     return view('welcome2');
+// });
+// Route::get('/dev', function () {
+//     return view('layouts.home1');
+// });
 /*product route*/
 
-Route::get('/boutique', 'ProductController@index')->name('products.index');
 Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show');
+Route::get('/boutique', 'ProductController@index')->name('products.index');
 Route::get('/search', 'ProductController@search')->name('products.search');
 
 
@@ -29,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('panier/{rowId}', 'CartController@update')->name('cart.update');
 
     Route::delete('/panier/{rowId}', 'CartController@destroy')->name('cart.destroy');
-    
+
     Route::post('/coupon', 'CartController@storeCoupon')->name('cart.store.coupon');
     Route::delete('/coupon', 'CartController@destroyCoupon')->name('cart.destroy.coupon');
 
@@ -56,5 +67,3 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

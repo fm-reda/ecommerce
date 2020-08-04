@@ -1,4 +1,7 @@
-@extends('layouts.master')
+
+{{-- ********************************************* Single product --}}
+
+@extends('layouts.master2')
 @section('content')
 <div class="col-md-12">
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-relative">
@@ -46,6 +49,8 @@
 
 @endsection
 @section('extra-js')
+{{-- <script src="js/main.js"></script> --}}
+
 <script>
     var mainImage = document.querySelector('#mainImage');
     var thumbnails = document.querySelectorAll('.img-thumbnail');

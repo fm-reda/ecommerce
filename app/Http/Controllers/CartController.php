@@ -45,7 +45,13 @@ class CartController extends Controller
             return $cartItem->id == $request->product_id;
         });
         if ($duplicata->isNotEmpty()) {
-            return redirect()->route('products.index')->with('success', 'Product already added');
+            if ($request->origin == 'home') {
+
+
+                return redirect()->route('home')->with('danger', 'Product already added');
+            }
+
+            return redirect()->route('products.index')->with('warning', 'Product already added');
         }
         $product = Product::find($request->product_id);
 
@@ -56,6 +62,12 @@ class CartController extends Controller
 
         Cart::add($product->id, $product->title, 1, $product->price)
             ->associate('App\Product');
+        // dd($request->origin);
+        if ($request->origin == 'home') {
+
+
+            return redirect()->route('home')->with('success', 'Product added successfully');
+        }
         return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
 
