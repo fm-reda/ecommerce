@@ -48,10 +48,13 @@ class CartController extends Controller
             if ($request->origin == 'home') {
 
 
+
+
                 return redirect()->route('home')->with('danger', 'Product already added');
             }
 
-            return redirect()->route('products.index')->with('warning', 'Product already added');
+
+            return redirect()->route('products.index')->with('danger', 'Product already added');
         }
         $product = Product::find($request->product_id);
 
@@ -66,9 +69,13 @@ class CartController extends Controller
         if ($request->origin == 'home') {
 
 
+
             return redirect()->route('home')->with('success', 'Product added successfully');
         }
-        return redirect()->route('products.index')->with('success', 'Product added successfully');
+
+        // dd('$request->categorie');
+        // dd($request->categorie);
+        return redirect()->route('products.index', ['categorie' => $request->categorie])->with('success', 'Product added successfully');
     }
 
     public function storeCoupon(Request $request)
@@ -81,7 +88,8 @@ class CartController extends Controller
         }
         $request->session()->put('coupon', [
             'code' => $coupon->code,
-            'remise' => $coupon->discount(Cart::subtotal())
+            'remise' => $coupon->discount(Cart::subtotal()),
+            'percent' => $coupon->percent_off,
         ]);
         return redirect()->back()->with('success', 'Le coupon est appliqué');
     }
@@ -117,6 +125,9 @@ class CartController extends Controller
      */
     public function update(Request $request, $rowId)
     {
+        // dd(request()->session()->get('coupon'));
+        // return response()->json(['error' => 'cart Quantity has not been Updated']);
+        // return response()->json(['test' => request()->session('coupon')], 200);
         $data = $request->json()->all();
         $validator = Validator::make($request->all(), [
 

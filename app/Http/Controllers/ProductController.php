@@ -34,7 +34,7 @@ class ProductController extends Controller
 
         $product = Product::where('slug', $slug)->firstOrFail();
         $stock = $product->stock === 0 ? 'Indisponible' : 'Disponible';
-        return view('products.show', compact('product', 'stock'));
+        return view('products.show2', compact('product', 'stock'));
     }
 
     public function search()

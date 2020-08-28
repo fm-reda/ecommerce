@@ -124,6 +124,29 @@
                         @else
                         <div class="p-4">
                             <p class="font-italic mb-4">Un coupon est deja appliqué</p>
+                            <div class="flex-sb-m">
+
+                                {{-- mark --}}
+
+                                <p class="text-uppercase text-success">
+                                    {{-- {{request()->session('coupon')->get('coupon')['percent']}} --}}
+                                    @if(request()->session('coupon')->get('coupon')['code'])
+                                    {{ (request()->session('coupon')->get('coupon')['code'])}}
+
+                                    @endif
+                                    <span>{{App\Coupon::where('code',request()->session('coupon')->get('coupon')['code'])->first()->percent_off}}%</span>
+                                </p>
+                                <span>
+                                    <form action="{{route('cart.destroy.coupon')}}" method="post"
+                                        class=" d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class=" btn btn-sm btn-outline-danger "><i
+                                                class="fa fa-trash"></i></button>
+
+                                    </form>
+                                </span>
+                            </div>
                         </div>
 
 
@@ -157,21 +180,23 @@
                                     <strong>{{getPrice(Cart::subtotal())}}</strong>
                                 </li>
 
+
                                 {{--  cas avec coupon  ------------------------------------------------}}
                                 @if (request()->session()->has('coupon'))
                                 <li class="d-flex justify-content-between py-3 border-bottom">
 
                                     <strong class="text-muted">Coupon:
                                         ({{request()->session('coupon')->get('coupon')['code']}})
-
+                                        {{-- 
                                         <form action="{{route('cart.destroy.coupon')}}" method="post"
-                                            class=" d-inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class=" btn btn-sm btn-outline-danger "><i
-                                                    class="fa fa-trash"></i></button>
+                                        class=" d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class=" btn btn-sm btn-outline-danger "><i
+                                                class="fa fa-trash"></i></button>
 
-                                        </form></strong>
+                                        </form> --}}
+                                    </strong>
 
                                     <strong>
                                         {{getPrice(request()->session('coupon')->get('coupon')['remise'])}}
@@ -217,9 +242,11 @@
     </div>
 
     @else
-    <div class="col-md-12">
+    <div class="col-md-12 m-t-40">
         <h5>Cart empty for this moment </h5>
-        <p> But u can visit shop the <a href="{{route('products.index')}}">shop</a> for shopping. </p>
+        <p> But u can visit shop the <a class="m-2 m-text20 text-primary" href="{{route('products.index')}}">shop</a>
+            for
+            shopping. </p>
     </div>
 
     @endif
@@ -230,13 +257,14 @@
     @section('extra-js')
     <script>
         var selects = document.querySelectorAll('#qty')
-    Array.from(selects).forEach((element) => {
-
-        element.addEventListener('change', function () {
-            var rowId = this.getAttribute('data-id');
-            var stock = this.getAttribute('data-stock');
-            var token = document.querySelector('meta[name="csrf-token"]').getAttribute(
-                'content');
+        Array.from(selects).forEach((element) => {
+            
+            element.addEventListener('change', function () {
+                var rowId = this.getAttribute('data-id');
+                var stock = this.getAttribute('data-stock');
+                var token = document.querySelector('meta[name="csrf-token"]').getAttribute(
+                    'content');
+                    console.log(rowId)
 
             fetch(
 

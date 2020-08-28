@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
@@ -50,10 +52,14 @@
     <!--===============================================================================================-->
 </head>
 
+
+
 <body class="animsition ">
 
+
+
     <!-- Header -->
-    <header class="header1">
+    <header class="header1  ">
         <!-- Header desktop -->
         <div class="container-menu-header">
             <div class="topbar">
@@ -87,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="wrap_header">
+            <div class="wrap_header ">
                 <!-- Logo -->
                 <a href="{{url('/')}}" class="logo ">
                     <img src="{{ asset('images/icons/logo2.png') }}" style="max-height: 50px!important" alt="IMG-LOGO">
@@ -97,8 +103,16 @@
                 <div class="wrap_menu">
                     <nav class="menu">
                         <ul class="main_menu">
-                            <li class="sale-noti">
-                                <a href="{{url('/')}}">Home</a>
+                            {{-- {{ dd(request())}} --}}
+                            {{-- @if (Route::has('products.index')) --}}
+                            <li class="{{Request::route()->getName()=='home'?'sale-noti':''}}">
+
+                                {{-- @else --}}
+
+
+                                <a href="{{route('home')}}">Home</a>
+                                {{-- @endif --}}
+                                {{-- <li class="sale-noti"> --}}
                                 {{-- <ul class="sub_menu">
                                     <li><a href="index.html">Homepage V1</a></li>
                                     <li><a href="home-02.html">Homepage V2</a></li>
@@ -106,8 +120,8 @@
                                 </ul> --}}
                             </li>
 
-                            <li>
-                                <a href="product.html">Shop</a>
+                            <li class="{{Request::route()->getName()=='products.index'?'sale-noti':''}}">
+                                <a href="{{route('products.index')}}">Shop</a>
                             </li>
 
                             {{-- <li class="sale-noti">
@@ -118,9 +132,9 @@
                                 <a href="cart.html">Features</a>
                             </li> --}}
 
-                            <li>
+                            {{-- <li>
                                 <a href="blog.html">Blog</a>
-                            </li>
+                            </li> --}}
 
                             <li>
                                 <a href="about.html">About</a>
@@ -235,22 +249,23 @@
             </div>
         </div>
         {{-- ********************************************* Alert message --}}
+
         @if (session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mb-0">
             {{session('success')}}
         </div>
 
         @endif
 
         @if (session('danger'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger mb-0">
             {{session('danger')}}
         </div>
 
         @endif
 
         @if (session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger mb-0">
             {{session('error')}}
         </div>
 
@@ -259,7 +274,7 @@
 
         @if (count($errors) >0)
 
-        <div class="alert alert-danger">
+        <div class="alert alert-danger mb-0">
             <ul class="mb-0 mt-0">
 
                 @foreach ($errors->all() as $error)
@@ -427,7 +442,7 @@
                     </li>
 
                     <li class="item-menu-mobile">
-                        <a href="product.html">Shop</a>
+                        <a href="{{route('products.index')}}">Shop</a>
                     </li>
 
                     <li class="item-menu-mobile">
@@ -493,7 +508,7 @@
     </header>
     <div class="">
 
-        <div class="row" style="min-height: 50vh">
+        <div class="" style="min-height: 50vh">
 
             @yield('content')
         </div>
@@ -701,8 +716,15 @@
         $(".selection-1").select2({
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
+        });
+        $(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
 		});
     </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{ asset('vendor/slick/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/slick-custom.js') }}"></script>
@@ -727,6 +749,30 @@
 			});
 		});
     </script>
+    {{-- <script type="text/javascript" src="{{ asset('vendor/noui/nouislider.min.js') }}"></script> --}}
+    {{-- <script type="text/javascript">
+        /*[ No ui ]
+    ===========================================================*/
+    var filterBar = document.getElementById('filter-bar');
+
+    noUiSlider.create(filterBar, {
+        start: [ 50, 200 ],
+        connect: true,
+        range: {
+            'min': 50,
+            'max': 200
+        }
+    });
+
+    var skipValues = [
+    document.getElementById('value-lower'),
+    document.getElementById('value-upper')
+    ];
+
+    filterBar.noUiSlider.on('update', function( values, handle ) {
+        skipValues[handle].innerHTML = Math.round(values[handle]) ;
+    });
+    </script> --}}
 
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>

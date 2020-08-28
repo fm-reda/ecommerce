@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 
         if (request()->session()->has('coupon')) {
             $total = (Cart::subtotal() - request()->session()->get('coupon')['remise']) * (config('cart.tax') / 100)
-                +  (Cart::subtotal() - request()->session()->get('coupon')['remise']);
+                + (Cart::subtotal() - request()->session()->get('coupon')['remise']);
         } else {
             $total = Cart::total();
         }
@@ -109,6 +109,7 @@ class CheckoutController extends Controller
             Cart::destroy();
 
             Session::flash('success', 'Your order has been succeeded.');
+            request()->session()->forget('coupon');
 
             return response()->json(['success' => 'payment Intent succeeded']);
         } else {

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('extra-meta')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -9,25 +9,31 @@
 
 @endsection
 @section('content')
-<div class="col-md-12">
-    <h1>page de paiement</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <form action="{{route('checkout.store')}}" method="POST" id="payment-form" class="my-4">
-                @csrf
-                <div id="card-element" class="mb-2">
-                    <input type="text" name="test">
-                    {{-- <!-- Elements will create input elements here --> --}}
-                </div>
+<div class="col-md-12 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Payment details</h2>
+                <form action="{{route('checkout.store')}}" method="POST" id="payment-form" class="my-4">
+                    @csrf
+                    <div id="card-element" class="mb-2 p-3 border">
+                        <input type="text" name="test">
+                        {{-- <!-- Elements will create input elements here --> --}}
+                    </div>
 
-                {{-- <!-- We'll put the error messages in this element --> --}}
-                <div id="card-errors" role="alert"></div>
+                    {{-- <!-- We'll put the error messages in this element --> --}}
+                    <div id="card-errors" role="alert"></div>
 
-                <button class="btn btn-success mt-4" id="submit">Pay ({{getPrice($total)}})</button>
-            </form>
+                    <div class="flex-sb p-3" style="background-color:#e4f1ff;">
+                        <span> Total</span>
+                        <span class="m-textr2">{{getPrice($total)}}</span>
+                    </div>
+                    <div class="flex-c-m"> <button class="col-md-12 btn btn-success mt-4" id="submit">Pay</button></div>
+
+                </form>
+            </div>
         </div>
     </div>
-
 </div>
 
 @endsection
@@ -38,6 +44,7 @@
     var elements = stripe.elements();
     var style = {
         base: {
+            border:"1px solid red",
             color: "#32325d",
             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: "antialiased",

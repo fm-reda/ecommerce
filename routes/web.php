@@ -13,7 +13,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/master', function () {
-    return view('layouts.master2');
+    return view('products.show2');
 });
 
 // Route::get('/', function () {
@@ -27,7 +27,7 @@ Route::get('/master', function () {
 // });
 /*product route*/
 
-Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show');
+Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show2');
 Route::get('/boutique', 'ProductController@index')->name('products.index');
 Route::get('/search', 'ProductController@search')->name('products.search');
 

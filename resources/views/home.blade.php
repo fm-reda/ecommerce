@@ -1,3 +1,5 @@
+{{-- ************************************************les commandes   --}}
+
 @extends('layouts.master')
 
 @section('content')

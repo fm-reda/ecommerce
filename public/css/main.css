@@ -1359,7 +1359,8 @@ li.sale-noti > a {
 }
 
 .item-slick1 {
-  height: 570px;
+  
+  height: 700px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -2345,5 +2346,8 @@ input.num-product::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; 
 }
+
+
+
 
 

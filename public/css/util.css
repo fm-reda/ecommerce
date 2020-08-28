@@ -7917,6 +7917,26 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
     line-height: 1.5;
     letter-spacing: 2px;
 }
+.m-textr1 {
+    font-family: Montserrat-Regular;
+    font-size: 30px;
+    color: #111111;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.m-textr2 {
+    font-family: Montserrat-Regular;
+    font-size: 20px;
+    color: #e65540;
+    text-transform: uppercase;
+}
+.tp {
+    background-color: #00000073;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
 
 /*[ L-Text 31 - 50 ]
 ///////////////////////////////////////////////////////////
@@ -7982,6 +8002,9 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 .color2 {
     color: #333333;
+}
+.colorlink {
+    color: #0073b1;
 }
 
 /*[  ]
@@ -8641,6 +8664,16 @@ EFFECT   EFFECT   EFFECT   EFFECT   EFFECT   EFFECT  EFFECT
 */
 .active1 {
     color: #333333;
+}
+.active20 {
+    /* padding: 4px 10px;
+    border-radius: 2px;
+    color: #000;
+	background-color: #e9edf3; */
+    /* border-bottom: 2px solid #e65540; */
+    color: #e65540;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 /*[ Parallax ]

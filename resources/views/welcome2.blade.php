@@ -5,15 +5,15 @@
 
 
 
-<div class="col-md-12">
+<div class="col-md-12 p-0">
     <section class="slide1">
         <div class="wrap-slick1">
             <div class="slick1">
-                <div class="item-slick1 item1-slick1" style="background-image: url(images/master-slide-01.jpg);">
-                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                <div class="item-slick1 item1-slick1" style="background-image: url(images/master-slide-05.jpg);">
+                    <div class="tp wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
                             data-appear="fadeInDown">
-                            Women Collection 2018
+                            Accessory collection 2020
                         </span>
 
                         <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37"
@@ -23,39 +23,41 @@
 
                         <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                             <!-- Button -->
-                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                            <a href="{{route('products.index')}}"
+                                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                                 Shop Now
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="item-slick1 item2-slick1" style="background-image: url(images/master-slide-02.jpg);">
-                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                <div class="item-slick1 item2-slick1" style="background-image: url(images/master-slide-04.jpg);">
+                    <div class="tp wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
                             data-appear="rollIn">
-                            Women Collection 2018
+                            Phone
                         </span>
 
                         <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37"
                             data-appear="lightSpeedIn">
-                            New arrivals
+                            Discount 20%
                         </h2>
 
                         <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                             <!-- Button -->
-                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                            <a href="{{route('products.index')}}"
+                                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                                 Shop Now
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="item-slick1 item3-slick1" style="background-image: url(images/master-slide-04.jpg);">
-                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                <div class="item-slick1 item3-slick1" style="background-image: url(images/master-slide-09.jpg);">
+                    <div class="tp wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15"
                             data-appear="rotateInDownLeft">
-                            Women Collection 2018
+                           Pc portale/Pc gaming
                         </span>
 
                         <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37"
@@ -65,7 +67,8 @@
 
                         <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                             <!-- Button -->
-                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                            <a href="{{route('products.index')}}"
+                                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                                 Shop Now
                             </a>
                         </div>
@@ -216,7 +219,8 @@
                             <div class="block2 border shadow">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew bg-light">
                                     {{-- <img src="images/item-02.jpg" alt="IMG-PRODUCT"> --}}
-                                    <img src="{{asset('storage/'.$product->image)}}" width="200px" alt="">
+                                    <img src="{{asset('storage/'.$product->image)}}" width="200px" alt=""
+                                        style="height:267px">
 
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -249,7 +253,7 @@
                                 </div>
                                 {{-- <hr /> --}}
                                 <div class="block2-txt p-t-20 px-2 pb-3">
-                                    <a href=" product-detail.html" style="font-size: 20px" class="text-primary block2-name dis-block
+                                    <a href="{{route('products.show2', $product->slug)}}" style="font-size: 20px" class="text-primary block2-name dis-block
                                     s-text3 p-b-5">
                                         {{$product->title}}
                                     </a>

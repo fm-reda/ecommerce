@@ -3,7 +3,9 @@
 
 @extends('layouts.master2')
 @section('content')
+
 <div class="col-md-12">
+
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm  position-relative">
         <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-success">
