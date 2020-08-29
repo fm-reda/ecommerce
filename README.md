@@ -3,7 +3,7 @@
 
 Ecommerce web app for shoping
 
-![alt text](https://github.com/KhalidLam/instagramClone/blob/master/screenshot.png)
+![alt text](https://github.com/KhalidLam/instagramClone/blob/master/ecommerce.jpg)
 
 ## Getting started
 1. Clone project `git clone https://github.com/fm-reda/ecommerce.git`
